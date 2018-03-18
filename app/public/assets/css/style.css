@@ -1,0 +1,16 @@
+body {
+    background-image: url(../images/bgimage.jpg);
+    background-size: cover;
+    /* background-position: left bottom; */
+}
+.container {
+    margin: auto;
+    background-color: #fff;
+    /* padding: 10px; */
+}
+input[type=text] {
+    width: 500px;
+}
+#submit {
+    width: 100%;
+}
