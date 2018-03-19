@@ -139,7 +139,7 @@
         <!-- Submit Button -->
         <button type="button" class="btn btn-primary btn-medium" id="submit"><span class="glyphicon glyphicon-ok-sign"></span> Submit</button>
         <hr>
-        API Friends List | Github Repo
+        <a href="/api/friends">API Friends List</a> | <a href="https://github.com/mramsey1992/friendFinder">Github Repo</a>
 
 
 
@@ -151,5 +151,56 @@
 </html>
 
 <script type="text/javascript">
+    $("#submit").on("click", function(event){
+        event.preventDefault();
+        console.log($("#userName").val());
+        //Make sure that all questions and blanks are filled in
+        var filledForm = true;
+        $("#input").each(function() {
+            if((this).val() === "") {
+                filledForm = false;
+            }
+        });
+        $("#surveyQuestion").each(function() {
+            if((this).val() === "") {
+                filledForm = false;
+            }
+        });
+
+        // if(filledForm){
+            var newUser = {
+                name: $("#userName").val(),
+                photo: $("#userPhoto").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val()
+                ]
+            }
+        // }
+        $("#userName").val("");
+        $("#userPhoto").val("");
+        $("#q1").val("");
+        $("#q2").val("");
+        $("#q3").val("");
+        $("#q4").val("");
+        $("#q5").val("");
+        $("#q6").val("");
+        $("#q7").val("");
+        $("#q8").val("");
+        $("#q9").val("");
+        $("#q10").val("");
+
+        $.post("/api/friends", newUser).then(function(data) {
+            console.log(data);
+        });
+    });
 </script>
 
