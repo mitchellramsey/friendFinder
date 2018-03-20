@@ -4,7 +4,7 @@ body {
     /* background-position: left bottom; */
 }
 .container {
-    margin: auto;
+    margin: 25px auto 25px;
     background-color: #fff;
     /* padding: 10px; */
 }

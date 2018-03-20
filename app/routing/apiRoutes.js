@@ -17,10 +17,13 @@ module.exports = function(app) {
         var userData = req.body;
         console.log(userData);
         console.log(friendData[0]);
-        if(userData.scores[0] > friendData[0].scores[0]){
-            var difference = userData.scores[0] - friendData.scores[0];
+        var userScore = userData.scores[0];
+        console.log(userScore);
+        console.log
+        if(userScore > friendData[0].scores[0]){
+            var difference = userScore - friendData[0].scores[0];
         } else {
-            var difference = friendData.scores[0] - userData.scores[0];
+            var difference = friendData[0].scores[0] - userScore;
         }
         console.log(difference);
 
