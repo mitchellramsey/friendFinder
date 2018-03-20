@@ -11,21 +11,46 @@ module.exports = function(app) {
         res.json(friendData);
     });
 
-    app.post("/api/friends", function(req, res){
-        
-        
+    app.post("/api/friends", function(req, res){    
+        //sets the incoming object at a new easier to use variable
         var userData = req.body;
-        console.log(userData);
-        console.log(friendData[0]);
-        var userScore = userData.scores[0];
-        console.log(userScore);
-        console.log
-        if(userScore > friendData[0].scores[0]){
-            var difference = userScore - friendData[0].scores[0];
-        } else {
-            var difference = friendData[0].scores[0] - userScore;
+        console.log(userData.scores);
+        //Set totalDifference at a value that is guaranteed to be lower for our first 'friend'  a.k.a 51
+        var friendDifference = 51;
+
+        //Loop Through the friend array
+        for(var i = 0; i < friendData.length; i++){
+            var totalDifference = 0;
+            //loop and compare new user with friend score's
+            for(var j = 0; j < userData.scores.length; j++) {
+                
+                var userScore = parseInt(userData.scores[j]);
+                // console.log(userScore);
+
+                var friendScore = parseInt(friendData[i].scores[j]);
+                // console.log(friendScore);
+                if(userScore > friendScore){
+                    var difference = userScore - friendScore;
+                } else {
+                    var difference = friendScore - userScore;
+                }
+                // console.log("Difference: " + difference);
+                totalDifference += difference;
+                // console.log("Total Difference: " + totalDifference);
+            }
+            if(totalDifference < friendDifference) {
+                friendDifference = totalDifference;
+                var matchData = friendData[i];
+                
+            }
         }
-        console.log(difference);
+
+        friendData.push(userData);
+
+        console.log(matchData);
+        
+       res.json({status: 'OK', matchName: matchData.name, matchImage: matchData});
+        
 
     });
 
