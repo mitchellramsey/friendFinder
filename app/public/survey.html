@@ -141,7 +141,7 @@
         <button type="button" class="btn btn-primary btn-medium" id="submit"><span class="glyphicon glyphicon-ok-sign"></span> Submit</button>
         <hr>
         <a href="/api/friends">API Friends List</a> | <a href="https://github.com/mramsey1992/friendFinder">Github Repo</a>
-        <div>Some Text Here<span id="results"></span></div>
+        
 
 
 
@@ -188,6 +188,8 @@ function checkURL(url) {
                 filledForm = false;
             }
         });
+        
+        filledForm = checkURL($("#userPhoto").val());
 
         if(filledForm){
             var newUser = {
@@ -233,7 +235,7 @@ function checkURL(url) {
             $("#matchedPerson").modal("toggle");     
         });
     }else {
-        alert("You must answer all questions and fill in both blanks to find a match. Please edit.");
+        alert("You must answer all questions and fill in both blanks to find a match, or you must enter a photo with the correct file type. Please edit.");
     }
     });
 </script>
