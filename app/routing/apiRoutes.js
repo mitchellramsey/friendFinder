@@ -49,7 +49,7 @@ module.exports = function(app) {
 
         console.log(matchData);
         
-       res.json({status: 'OK', matchName: matchData.name, matchImage: matchData});
+       res.json(matchData);
         
 
     });
